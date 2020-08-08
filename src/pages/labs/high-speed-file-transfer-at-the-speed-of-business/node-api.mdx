@@ -1,0 +1,111 @@
+---
+title: Aspera Node API
+description: Think Lab 5352 - Aspera Node API
+tabs:
+  [
+    'Prerequisites',
+    'CLI',
+    'Client & CP4I',
+    'Connect & AoC',
+    'Node API',
+    'Cloud to Cloud',
+    'Distribution',
+  ]
+---
+
+export const Title = () => <span>High Speed File Transfer at the Speed of Business</span>
+
+## Starting a Node-to-Node Transfer with the Aspera Node API
+
+You are now familiar with the Aspera CLI, Native Client and the Aspera Browser Client. If
+you find you would like to take advantage of the transfer speeds, reliability and security
+provided out of the box by the FASP protocol but don't want to be handling transfers
+manually you can use the
+[Aspera API](https://developer.ibm.com/api/view/aspera-prod:ibm-aspera:title-IBM_Aspera#Overview)
+to programmatically trigger transfers.
+
+In the previous sections you have performed an upload and a download, there are API's
+available that and many other workflows but in this section you will be focusing on the
+the API for a node-to-node transfer, i.e. triggering a transfer from one Aspera server to
+another. In this section you will move the file `100MB` from the CP4I cluster to IBM Cloud
+Object Storage (ICOS) located in the IBM Cloud in Dallas using the '
+[Aspera Node API](https://developer.ibm.com/aspera/docs/node-api-reference/)'.
+
+![Overview](./images/api-overview.png)
+
+## Lets Go
+
+1. Navigate back to the Terminal on the Developer machine.
+
+1. Move to your Home directory if you are not already there:
+
+   ```bash
+   cd ~
+   ```
+
+1. Print the contents of the secret that was downloaded in the previous section:
+
+   ```bash
+   cat lab5352_secret.txt
+   ```
+
+   This is the transfer token that will be used to authenticate the API request.
+
+1. Execute the API call making sure you substitute the two placeholders.
+
+   This API call will initiate an Aspera transfer between the source node, the CP4I
+   OpenShift cluster and the remote node, an Aspera Transfer Server running as a service
+   in IBM Cloud Dallas connected to IBM Cloud Object Storage.
+
+   Replace the following placeholders:
+
+   - **TOKEN_GOES_HERE**: Should be replaced with the token printed in the previous step.
+     Ensure you keep the space after the word 'Basic', the token ends with two equal signs
+     `==`.
+   - **YOUR_FILENAME_HERE**: Create a unique filename for your file, you can use your lab
+     student number as an example. All lab attendees will be sending their file to the
+     same IBM ICOS bucket so this way you can identify your file.
+
+   ```bash
+   curl -ki -u my_access_key:my_access_key_secret -X POST https://asperahsts.apps.demo.ibmdte.net:443/ops/transfers -d '{"direction": "send", "remote_host": "ats-sl-dal.aspera.io", "remote_user":"xfer","token": "Basic TOKEN_GOES_HERE","paths": [{"source" : "/100MB", "destination": "/YOUR_FILENAME_HERE"}]}'
+   ```
+
+1. Once you make the POST an Aspera 'Transfer Spec' will be returned. There is a lot of
+   information here but you only need to focus on the ID.
+
+   ![Transfer Spec](./images/api-transferspec.png)
+
+1. Check the status of the file transfer by querying the `/ops/transfers/:id` endpoint
+   substituting your ID returned in the Transfer Spec. Replace `TRANSFER_ID_HERE` with the
+   ID from the previoud step.
+
+   ```bash
+   curl -ki -u my_access_key:my_access_key_secret https://asperanode.apps.demo.ibmdte.net:443/ops/transfers/TRANSFER_ID_HERE
+   ```
+
+   If successful the status will be `completed`
+
+   ![Transfer Spec](./images/api-status.png)
+
+1. Navigate back to Aspera on Cloud in Firefox and select `All Files` from the breadcrumb
+   to get back to your home view.
+
+   ![Select All Files](./images/api-nav-all-files.png)
+
+1. Select the `IBM ICOS - Dallas` folder to browse the Dallas based Object Storage you
+   just sent to.
+
+   ![Select Dallas](./images/api-select-dallas-dir.png)
+
+   You will now be able to see the file named with your custom name. Note: Due to caching
+   you may have to wait and refresh after a few minutes before your file appears.
+
+## Recap
+
+You have successfully initiated a remote transfer via the
+[Aspera Node API](https://developer.ibm.com/api/view/aspera-prod:ibm-aspera:title-IBM_Aspera#Overview)
+between a CP4I OpenShift Cluster with NFS attached storage and an Aspera Transfer Server
+running in IBM Cloud connected to IBM Cloud Object Storage located in Dallas.
+
+Next up you will see how simple it is to now move your file between clouds; from IBM Cloud
+Object Storage in Dallas to AWS S3 in Frankfurt.
