@@ -32,7 +32,7 @@
 - title: IBM Tivoli Monitoring
   pages:
     - title: Test-Doc
-      path: /ITM/test-doc
+      path: /ITM/spufi-1/how-to-retrieve-live-information-spufi
 - title: IBM Cloud Private
   pages:
     - title: Install - Pre-deployment steps
