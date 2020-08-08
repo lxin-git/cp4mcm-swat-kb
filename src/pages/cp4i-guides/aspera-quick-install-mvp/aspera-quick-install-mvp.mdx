@@ -1,0 +1,37 @@
+---
+title: Aspera Quick Install
+description: Quick install instructions for a MVP deployment of Aspera.
+keywords: Aspera, MVP
+tags: Aspera, MVP
+---
+
+import Server from './server'
+import Client from './client'
+import Optional from './optional'
+import ArticleDetails from '../../../components/ArticleDetails'
+
+<ArticleDetails name="Ryan Hay" lastUpdated="April 2020" readTimeMinutes="8" />
+
+These instructions are for a quick MVP traditional install of Aspera. The install is for
+the most basic client/server architecture available to support transfer between a client
+and a Linux server. For more detailed information and advanced configuration details
+please refer to the latest version of the
+[High Speed Transfer Server product documentation](https://www.ibm.com/support/knowledgecenter/en/SSL85S).
+
+<br />
+
+![Basic Deployment](./images/basicAsperaDeployment.png)
+
+<br />
+
+<Accordion>
+  <AccordionItem title="Install and configure Aspera on the Server">
+    <Server />
+  </AccordionItem>
+  <AccordionItem title="Install and configure Aspera on the Client">
+    <Client />
+  </AccordionItem>
+  <AccordionItem title="Optional Config">
+    <Optional />
+  </AccordionItem>
+</Accordion>
