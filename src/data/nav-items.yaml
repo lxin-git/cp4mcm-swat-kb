@@ -30,9 +30,10 @@
     - title: Test-Doc
       path: /OpenShift/test-doc
 - title: IBM Tivoli Monitoring
-  pages:
-    - title: Test-Doc
-      path: /ITM/test-doc
+    - title: How to extract the full TEMS database schema
+      path: /ITM/spufi-2/spufi2
+    - title: How to retrieve LIVE situations and events via CLI
+      path: /ITM/spufi-1/how-to-retrieve-live-information-spufi
 - title: IBM Cloud Private
   pages:
     - title: Install - Pre-deployment steps
