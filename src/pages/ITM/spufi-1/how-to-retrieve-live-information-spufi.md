@@ -1,33 +1,31 @@
 ---
-title: Use case 1: How to retrieve LIVE information on situations/events via CLI
-description:how to extract key information via the command line from your TEMS relating to events/situations that have fired in your ITM infrastructure.
-keywords: SPUFI, TEMS, ITM, Tivoli, monitoring, Leftwich, Mark Leftwich, events, situations, ITMv6
-tags: SPUFI, TEMS, ITM, Tivoli, monitoring, Leftwich, Mark Leftwich, events, situations, ITMv6
+title: How to retrieve LIVE situations and events via CLI
+description: 
+  How to obtian information on ITM situations and events via the TEMS database and SPUFI.
+keywords: ITM, monitoring, Tivoli, TEMS, database, SPUFI, Leftwich, mark leftwich, situations, events
+tags: ITM, monitoring, Tivoli, TEMS, database, SPUFI, Leftwich, mark leftwich, situations, events
 ---
 
 import ArticleDetails from '../../../components/ArticleDetails'
 
 [//]: # (Change the name and date parameters in the following line for it to appear correctly on the site)
 
-<ArticleDetails name="Mark Leftwich" lastUpdated="Aug 8th" readTimeMinutes="15" />
+<ArticleDetails name="Mark Leftwich" lastUpdated="Aug 8th" readTimeMinutes="10" />
 
-
-### Overview
+## Overview
 The goal is to be able to pull information on which situations have fired (event raised), been acknowledged, or closed from across the entire monitoring infrastructure straight from the HUB TEMS itself.  There are many reasons why you would use this method, here are a few:
 
- 
+* You can sanity check the events you see in your TEPS GUI are the same as what the ITM infrastructure sees
 
- - You can sanity check the events you see in your TEPS GUI are the same as what the ITM infrastructure sees
+* You can make sure all RTEMS are sending events, as you can see the TEMS (throughnode).
 
- - You can make sure all RTEMS are sending events, as you can see the TEMS (throughnode).
+* You can also check if acknowledgements are being received by the TEMS (that were sent from Omnibus or TEC)
 
- - You can also check if acknowledgements are being received by the TEMS (that were sent from Omnibus or TEC)
-
- - You can fire test events from an agent and track it through the RTEMS, to the HUB and check it appears in the TEP GUI (situation events console)  
+* You can fire test events from an agent and track it through the RTEMS, to the HUB and check it appears in the TEP GUI (situation events console)  
 
 
 
- Understanding the process
+## Understanding the process
 Today we will be using the KDSTSNS tool with some SQL to query the situation status table on the HUB TEMS, specifically the ISITSTSH table. As in the first blog of the series explained how to query the TEMS, the below information explains how to interpret the output of the SQL, so you can utilise the information for you own means. I will start by breaking down what each column means in the table we are querying and they go through a basic example of how the TEMS processes events. This will give you the basics to go away and try it for yourself!
 
  
@@ -61,7 +59,7 @@ The key to understanding the output is the Deltastat column, it will have a sing
   
 Now you know how to read the data, you need to understand the processing of the TEMS
 
-**Example scenario:**
+## Example scenario:
 
 1)       Condition is met on an agents and an event is fired. A "Y" record appears in the DELTASTAT column to show the event as raised
 
@@ -69,24 +67,14 @@ Now you know how to read the data, you need to understand the processing of the 
 
 From the output below, you can see an event has been raised "Y" and that it has been acknowledge "A" for the same endpoint. The agent name, throughnode (TEMS agent reports directly to) and the situation name all have the same value. As these values are all the same, you can tell the raised "Y" and acknowledge "A" event came from the same agent which was connected to the same TEMS (HUB_CANTONA).
 
- 
-
 ![](./spufi1.png)
- 
-
- 
 
 If the situation is no longer true (either the condition returns below the threshold set in the situation for a sampled situation, or an operator closed the event for a pure situation), then all rows matching the same criteria for that particular situation are removed and replaced with a "N" reset/closed row. You will never see a "Y" or an "A" row if an "N" row is present, as it clears and resets that situation ready for when the situation fires again.
+  
+When you query your own TEMS tables, use the information above to guide you. You can use it to check which situations/events have been raised, acknowledged or closed.  
+  
 
- 
-
-When you query your own TEMS tables, use the information above to guide you. You can use it to check which situations/events have been raised, acknowledged or closed.
-
- 
-
- 
-
-### How to retrieve the key information
+## How to retrieve the key information
 For the method of how to retrieve the data and where to put the files. This was covered in post one in the series:   Link - Blog 1 
 
  
@@ -105,7 +93,7 @@ FROM O4SRV.ISITSTSH;
  
  
 
-### Result:
+## Result:
  
 
 Here is an example output from my test system:
@@ -118,7 +106,7 @@ Here is an example output from my test system:
 
  
 
-### What next?
+## What next?
 You now have the methodology and the SQL to get the data you need. You could perform health check, test events, etc.  You could also open up the resulting file in a spreadsheet editor. A quick text to columns and you can filter away on a single agent, TEMS, situation, DELTASTAT type to really refine masses of information down to concise quality checks.
 
  
