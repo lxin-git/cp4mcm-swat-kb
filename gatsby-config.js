@@ -1,4 +1,5 @@
 module.exports = {
+  pathPrefix: "/cp4mcm-swat-kb",
   siteMetadata: {
     title: 'IBM SWAT for Multi-Cloud-Manager (MCM) Home',
     description:
