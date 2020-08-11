@@ -1,0 +1,86 @@
+---
+title: How to add file / folder structures to an article
+description:
+  This article will show you how to add file / folder structure diagrams to your articles.
+keywords: file, folder, diagram, structure, embed, tree, 
+tags: file, folder, diagram, structure, embed, tree,
+---
+
+import ArticleDetails from '../../../components/ArticleDetails'
+
+[//]: # (Change the name and date parameters in the following line for it to appear correctly on the site)
+
+<ArticleDetails name="Mark Leftwich" lastUpdated="Aug 11th 2020" readTimeMinutes="5" />
+
+## Overview
+---
+This article will show you a few options you can use to build and display file / folder structures in your articles clearly.
+**Note:** Each example is wrapped in tripple backticks before and after the code. This will keep the file structure formatted correctly when published.
+The backticks also allow the website to trim what is shown and provide a dropdown feature. This is helpful if large structure/trees are being used.
+ 
+## Option 1
+---
+```
+IBM Project
+│   README.md
+│   file001.txt    
+│
+└───folder1
+│   │   file011.txt
+│   │   file012.txt
+│   │
+│   └───subfolder1
+│       │   file111.txt
+│       │   file112.txt
+│       │   ...
+│   
+└───folder2
+    │   file021.txt
+    │   file022.txt
+```  
+
+## Option 2
+---
+
+```
+├── _config.yml
+├── _drafts
+│   ├── begin-with-the-crazy-ideas.textile
+│   └── on-simplicity-in-technology.markdown
+├── _includes
+│   ├── footer.html
+│   └── header.html
+├── _layouts
+│   ├── default.html
+│   └── post.html
+├── _posts
+│   ├── 2007-10-29-why-every-programmer-should-play-nethack.textile
+│   └── 2009-04-26-barcamp-boston-4-roundup.textile
+├── _data
+│   └── members.yml
+├── _site
+└── index.html
+```
+
+## Option 3:
+
+This is not the cleanest looking, but if you are concerned about Unicode characters you can use ASCII to build the structures
+
+```
+.
++-- _Folder 1
++-- _Folder 2
+|   +-- File_name_1.txt
+|   +-- IBM_example_file.markdown
++-- _Folder 3
+|   +-- footer.html
+|   +-- header.html
++-- _Folder 4
+|   +-- default.html
+|   +-- post.html
++-- Folder 5
++-- index.html
+```
+
+
+<img src={'/SWAT_Header.gif'} alt="Logo" />

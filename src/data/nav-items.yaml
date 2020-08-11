@@ -1,0 +1,74 @@
+- title: New
+  pages:
+    - path: /announcements/new
+- title: Multi-Cloud-Manager
+  pages:
+    - title: MCM Holding Page
+      path: /multi-cloud-manager/holding-page
+- title: ICAM
+  pages:
+    - title: Test-Doc
+      path: /icam/holding-page
+- title: CAM
+  pages:
+    - title: Test-Doc
+      path: /cam/holding-page
+- title: Cloudforms
+  pages:
+    - title: Test-Doc
+      path: /cloudforms/holding-page
+- title: Edge Computing Manager
+  pages:
+    - title: Test-Doc
+      path: /edge-computing-manager/holding-page
+- title: OpenShift
+  pages:
+    - title: Test-Doc
+      path: /openShift/holding-page
+- title: IBM Tivoli Monitoring
+  pages:
+    - title: How to extract the TEMS database schema via SPUFI
+      path: /itm/spufi-2/spufi2
+    - title: SPUFI - Retrieve LIVE situations and events via CLI
+      path: /itm/spufi-1/how-to-retrieve-live-information-spufi
+- title: IBM Cloud Private
+  pages:
+    - title: Install - Pre-deployment steps
+      path: /ibm-cloud-private/icp-install/icp-predeploy
+    - title: icp test
+      path: /ibm-cloud-private/icp-install/icptest
+- title: Humio
+  pages:
+    - title: Test-Doc
+      path: /humio/holding-page
+- title: SysDig
+  pages:
+    - title: Test-Doc
+      path: /sysdig/holding-page
+- title: Turbonomic
+  pages:
+    - title: Test-Doc
+      path: /turbonomic/holding-page
+- title: Site Guides
+  pages:
+    
+    - title: Creating a new article
+      path: /site-guides/creating-an-article/creating-new-entry
+    - title: Adding images to an article
+      path: /site-guides/adding-images/adding-images
+    - title: Adding video to an article
+      path: /site-guides/adding-video/adding-video
+    - title: Adding folder/file structure
+      path: /site-guides/file-structure/file-structure
+    - title: Markdown tips and Tricks
+      path: /site-guides/markdown-guide/md-tips
+- title: Mark Test Documents
+  pages:
+    - title: High Speed File Transfer at the Speed of Business
+      path: /labs/high-speed-file-transfer-at-the-speed-of-business/prerequisites
+- title: Mark Test Blog
+  pages:
+    - title: Blog Placeholder
+      path: /blog/placeholder/placeholder
+    
+

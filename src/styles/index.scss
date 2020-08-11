@@ -1,0 +1,10 @@
+// This is where your application styles could go.
+.article-details {
+}
+
+// Used to reverse default style casing ordered list to render as 66% width when min-width is 66rem
+.accordion-list {
+  ol {
+    width: 100%;
+  }
+}

@@ -1,0 +1,95 @@
+---
+title: Aspera CLI
+description: Think Lab 5352 - Aspera CLI
+tabs:
+  [
+    'Prerequisites',
+    'CLI',
+    'Client & CP4I',
+    'Connect & AoC',
+    'Node API',
+    'Cloud to Cloud',
+    'Distribution',
+  ]
+---
+
+export const Title = () => <span>High Speed File Transfer at the Speed of Business</span>
+
+## Aspera ascp CLI
+
+The very first Aspera client was a command line tool called `ascp`. You will start this
+lab by using the `ascp` CLI client to download a file from the Aspera hosted Demo Server.
+
+![Aspera Native Client](./images/native-client.png)
+
+## Using the ascp CLI
+
+1. Open the Terminal app from the desktop of the 'Developer' machine and ensure you are in
+   the `/home/ibmuser` directory. You can check this by running `pwd`.
+
+1. Execute the following command to download the file named '100MB' from the Aspera Demo
+   Server:
+
+   ```bash
+   ascp -O 33001 -P 33001 -l 100M aspera@demo.asperasoft.com:/aspera-test-dir-large/100MB /home/ibmuser
+   ```
+
+   When prompted for the password enter: `demoaspera`
+
+   Note: `-O` sets the UDP port, `-P` sets the SSH port & `-l` sets the Target Rate. You
+   can read more about the available options of the CLI with `man ascp`.
+
+   The output should look like:
+
+   ![CLI Download Output](./images/cli-download.png)
+
+The file named `100MB` has now been download to the `/home/ibmuser` directory. You can run
+`ls -lh` to see the new file.
+
+## Scripting the ascp CLI
+
+The `ascp` CLI is a flexible option for initiating FASP transfers. The CLI can easily be
+used in new or existing scripts to improve transfer performance, security and management
+capabilities. The CLI can replace tools like; scp, ftp, sftp, rsync and other similar tcp
+based protocols. Lets look at a quick example of how easy it is to use `ascp` in a script:
+
+1. Export the password as an environment variable so the script can run without user
+   interaction:
+
+   ```bash
+   export ASPERA_SCP_PASS=demoaspera
+   ```
+
+   **Note:** This is not compulsory however if you do not export the password you will be
+   prompted for the password each time the script is executed. You also have the option of
+   configuring SSH Key based authentication.
+
+1. Execute the `download100MB.sh` script in the `/home/ibmuser` directory by running:
+
+   ```bash
+   /home/ibmuser/download100MB.sh
+   ```
+
+   ![CLI Download Script](./images/cli-download-script.png)
+
+   You will notice this time the file gets `skipped`. Print the script to the screen:
+
+   ```bash
+   cat /home/ibmuser/download100MB.sh
+   ```
+
+   If you look at the command being executed in the script you will notice there is an
+   additional option added; `-k 1`, this tells ascp to only re-download or resume a file
+   download if file attributes are different. In this case the file is identical so there
+   is no need to re-download. You can read more about resume-levels (`-k`) and other
+   options with `man ascp`.
+
+## Recap
+
+You have just downloaded a file from the Aspera Demo Server using the Aspera `ascp` CLI
+client both from the command line and in a script.
+
+Download commands are simple when you know what file is available for download at the
+remote side. What happens when you are not familiar with the structure of the remote
+filesystem? Next up you will look at improving the end-user experience using the native
+Aspera Client GUI that addresses challenges like this.
