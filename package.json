@@ -17,7 +17,7 @@
     "gatsby": "^2.20.26",
     "gatsby-plugin-facebook-pixel": "^1.0.3",
     "gatsby-plugin-google-analytics": "^2.2.4",
-    "gatsby-plugin-mdx": "^1.2.33",
+    "gatsby-plugin-mdx": "1.2.22",
     "gatsby-remark-autolink-headers": "^2.3.11",
     "gatsby-remark-copy-linked-files": "^2.3.12",
     "gatsby-remark-embed-video": "^3.0.10",
