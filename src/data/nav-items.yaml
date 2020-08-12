@@ -35,8 +35,6 @@
   pages:
     - title: Install - Pre-deployment steps
       path: /ibm-cloud-private/icp-install/icp-predeploy
-    - title: icp test
-      path: /ibm-cloud-private/icp-install/icptest
 - title: Humio
   pages:
     - title: Test-Doc
