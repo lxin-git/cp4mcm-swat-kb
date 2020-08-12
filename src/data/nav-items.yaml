@@ -51,7 +51,6 @@
       path: /turbonomic/holding-page
 - title: Site Guides
   pages:
-    
     - title: Creating a new article
       path: /site-guides/creating-an-article/creating-new-entry
     - title: Adding images to an article
@@ -62,13 +61,6 @@
       path: /site-guides/file-structure/file-structure
     - title: Markdown tips and Tricks
       path: /site-guides/markdown-guide/md-tips
-- title: Mark Test Documents
-  pages:
-    - title: High Speed File Transfer at the Speed of Business
-      path: /labs/high-speed-file-transfer-at-the-speed-of-business/prerequisites
-- title: Mark Test Blog
-  pages:
-    - title: Blog Placeholder
-      path: /blog/placeholder/placeholder
+
     
 
